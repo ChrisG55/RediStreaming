@@ -46,10 +46,10 @@ all: $(MODULE_SO)
 $(MODULE_SO): $(shell rm -f module.o)
 $(MODULE_SO): $(MODULE) version.h
 	@# Just to make sure old versions of the modules are deleted
-	rm -f module.so
+	rm -f $(MODULE_SO)
 	$(CC) -o $@ $(MODULE) $(SHOBJ_LDFLAGS) -lc -lm $(LDFLAGS)
 
 clean:
-	rm -fv *.[oad]
+	rm -fv *.[oad] $(MODULE_SO)
 
 .PHONY: all clean
